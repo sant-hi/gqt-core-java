@@ -14,11 +14,12 @@ class ArrayOperations3 {
 
 
 
-    double[][][] revenue;
+  long[][][] revenue;
 
-    double invest;
+   long invest;
 
-    double lastYearRev;
+   long lastYearRev;
+   long sum_rev;
 
     Scanner sc = new Scanner(System.in);
 
@@ -40,19 +41,19 @@ class ArrayOperations3 {
 
 
 
-        revenue = new double[cat][lang][mov];
+        revenue = new long[cat][lang][mov];
 
 
 
         System.out.println("Enter current total investment:");
 
-        invest = sc.nextDouble();
+        invest = sc.nextLong();
 
 
 
         System.out.println("Enter last year revenue:");
 
-        lastYearRev = sc.nextDouble();
+        lastYearRev = sc.nextLong();
 
 
 
@@ -78,15 +79,15 @@ class ArrayOperations3 {
 
                     System.out.print("    Enter revenue for Movie " + (k + 1) + ": ");
 
-                    revenue[i][j][k] = sc.nextDouble(); // ✅ fixed from rev to revenue
-
+                    revenue[i][j][k] = sc.nextLong(); // ✅ fixed from rev to revenue
+                    sum_rev+=revenue[i][j][k];
                 }
 
             }
 
         }
 
-        System.out.println("Data collected");
+        System.out.println("Data collected and calculated");
 
         System.out.println("-----------------");
 
@@ -110,7 +111,7 @@ class ArrayOperations3 {
 
                     System.out.println("    Movie " + (k + 1) + " Revenue = ₹" + revenue[i][j][k] + " crores");
 
-                    totalRev += revenue[i][j][k]; // ✅ fixed from sc.revenue to revenue
+                    // ✅ fixed from sc.revenue to revenue
 
                 }
 
@@ -122,23 +123,23 @@ class ArrayOperations3 {
 
         System.out.println("----------------");
 
-        System.out.println("Total Revenue: ₹" + totalRev + " crores");
+        System.out.println("Total Revenue: ₹" +sum_rev + " crores");
 
 
 
-        if (totalRev > invest) {
+        if (sum_rev > invest) {
 
-            System.out.println("Hemanth made a PROFIT of ₹" + (totalRev - invest) + " crores");
+            System.out.println("Hemanth made a PROFIT of ₹" + (sum_rev - invest) + " crores");
 
         } else {
 
-            System.out.println("Hemanth made a LOSS of ₹" + (invest - totalRev) + " crores");
+            System.out.println("Hemanth made a LOSS of ₹" + (invest - sum_rev) + " crores");
 
         }
 
 
 
-        if (totalRev > lastYearRev) {
+        if (sum_rev > lastYearRev) {
 
             System.out.println("This year's performance is BETTER than last year");
 
