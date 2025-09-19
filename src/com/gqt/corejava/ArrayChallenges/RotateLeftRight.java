@@ -19,7 +19,7 @@ public class RotateLeftRight {
 		        System.out.print("Positions: ");
 		        int k = sc.nextInt();
 		        if (n == 0) return;
-		        k = k % n; // normalize
+		        k = k % n; 
 
 		        for (int i = 0; i < k; i++) {
 		            if (dir == 'L') {
